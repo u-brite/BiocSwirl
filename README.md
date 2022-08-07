@@ -20,18 +20,16 @@ For this hackathon we adapted the [Analyzing PBMC scATAC-seq tutorial](https://s
 
 ## Data {#data}
 
-The data used is from the 10X genomics website. It contains a single-cell ATAC-seq dataset of human peripheral blood mononuclear cells (PBMCs). The files below will be downloaded within the tutorial. 
+The data used is from the 10X genomics website. It contains a single-cell ATAC-seq dataset of human peripheral blood mononuclear cells (PBMCs). The files below will be downloaded by the tutorial itself, so there is no need to download it. 
 
 - [The Raw data](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_filtered_peak_bc_matrix.h5)
 - [The Metadata](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_singlecell.csv)
 - The [fragments file](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_fragments.tsv.gz) 
 The [fragments file index](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_fragments.tsv.gz.tbi)
-
+-The [ScRNASeq file](https://signac-objects.s3.amazonaws.com/pbmc_10k_v3.rds)
 
 
 ## Usage {#usage}
-
-
 
 ### Installation {#installation}
 
@@ -95,4 +93,4 @@ Works in all Operating Systems R studio can be run in.
 Almas Khan \| [almas.khan2\@outlook.com](mailto:almas.khan2@outlook.com){.email} \| Github:almas2019\ Team Leader\
 Yong Wang [yongwnet70\@gmail.com](mailto:yongwnet70@gmail.com){.email} \|Github:yongwnet70\ Member\ 
 Sayan Bakshi [sbakshi\@uab.edu](mailto:sbakshi@uab.edu){.email} \|Github:bakshisayan\ Member\ 
-Yong Wang [yongwnet70\@gmail.com](mailto:yongwnet70@gmail.com){.email} \|Github:yongwnet70\ Member\ 
+Kingsley Emmanuel Bentum [kbentum8786\@tuskegee.edu](mailto:kbentum8786@tuskegee.edu){.email} \|Github:Drkbentum\ Member\ 
