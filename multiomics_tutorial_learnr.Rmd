@@ -30,7 +30,7 @@ metadata_dest <-  paste(getwd(), "/data/atac_v1_pbmc_10k_singlecell.csv",sep="")
 fragment_dest <- paste(getwd(), "/data/atac_v1_pbmc_10k_fragments.tsv.gz",sep="")
 fragment_index_dest <- paste(getwd(), "/data/atac_v1_pbmc_10k_fragments.tsv.gz.tbi",sep="")
 scrna_seq_dest <- paste(getwd(),"pbmc_10k_v3.rds",sep="")
-Download file and add to directory
+#Download file and add to directory
 download.file(raw_data_url,raw_data_dest)
 download.file(metadata_url,metadata_dest)
 download.file(fragment_url,fragment_dest,mode="wb")
