@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ### **Multimodal Workflow Tutorial Combining scATAC-seq with scRNA-seq**
 #### **Team BiocSwirl:** Sayan Bakshi, Yong Wang, Kingsley Bentum, Lisa N. Cao, Almas Khan (Team Leader)
+##### This interactive course is adapted from PBMC scATAC-seq tutorial by Seurat/Signac team (https://satijalab.org/signac/articles/pbmc_vignette.html)
 
 ### What is ATAC-seq?
 
@@ -70,10 +71,23 @@ quiz(
   )
 ```
 
+```{r quiz-0_5}
+quiz(
+  question("An application of ATAC-seq in disease research may include:",
+    answer("Identifying the ideal inhibitor to an undesiring gene expression"),
+    answer("Comparing epigenetic markers in disease and normal states"),
+    answer("Providing supporting data to RNA-seq and DNA methylation results"),
+    answer("All of the above", correct = TRUE))
+  )
+```
+
 Single-cell ATAC-seq (scATAC-seq) technology has also been developed to study cell type-specific chro-
 matin accessibility in tissue samples containing a heterogeneous cellular population _(Baek S, Lee I. CSBJ. 2020)_. 
 
 ## **Topic 1 : Setting Up**
+
+### Prerequisite
+_R version > 4.1.3_ 
 
 ### Libraries
 
@@ -93,7 +107,12 @@ library(patchwork)
 set.seed(1234)
 ```
 
-```{r load-libraries, exercise=TRUE}
+```{r load-libraries, exercise=TRUE, exercise.lines = 7}
+
+
+
+
+
 
 ```
 
@@ -116,9 +135,9 @@ quiz(
   )
 ```
 
-### Downloading Dataset
+### Dataset
 
-_Please make a folder called data within the tutorial package, download these files <links>, and keep the downloaded files within the 'data' folder_
+_The required data has been downloaded in the 'data' folder to be used in this tutorial_
 
 ## **Topic 2 : Pre-processing Workflow**
 
@@ -150,7 +169,7 @@ question_rank(
 ```
 
 ```{r load-peak-matrix-hint}
-counts <- Read10X_h5(filename = "../../Project/Raw_data/atac_v1_pbmc_10k_filtered_peak_bc_matrix.h5")
+counts <- Read10X_h5(filename = "data/atac_v1_pbmc_10k_filtered_peak_bc_matrix.h5")
 ```
 
 ### Load the metadata:
@@ -161,7 +180,7 @@ counts <- Read10X_h5(filename = "../../Project/Raw_data/atac_v1_pbmc_10k_filtere
 
 ```{r load-metadata-hint}
 metadata <- read.csv(
-  file = "../../Project/Raw_data/atac_v1_pbmc_10k_singlecell.csv",
+  file = "data/atac_v1_pbmc_10k_singlecell.csv",
   header = TRUE,
   row.names = 1
 )
@@ -178,7 +197,7 @@ chrom_assay <- CreateChromatinAssay(
   counts = counts,
   sep = c(":", "-"),
   genome = 'hg19',
-  fragments = '../Project/Raw_data/atac_v1_pbmc_10k_fragments.tsv.gz',
+  fragments = 'data/atac_v1_pbmc_10k_fragments.tsv.gz',
   min.cells = 10,
   min.features = 200
 )
@@ -423,9 +442,9 @@ question_text(
 
 Utilize common scRNAseq-data-analysis functions:
 
-```{r quiz-x, echo=FALSE}
+```{r quiz-8, echo=FALSE}
 quiz(
-  question("What are the fuctions used for non-linear dimension reduction and clustering?)",
+  question("What are the fuctions used for non-linear dimension reduction and clustering?",
   answer("RunUMAP()", correct =TRUE),
   answer("FindNeighbors()", correct = TRUE),
   answer("FindCluters()", correct = TRUE),
@@ -456,7 +475,180 @@ DimPlot(object = pbmc, label = TRUE) + NoLegend()
 
 ## **Topic 6 : Create a Gene Activity Matrix**
 
+With UMAP visualization, you can identify the presence of multiple cell groups. Now, we will assess the chromatin accessibility of each gene to quantify its activity by creating a gene activity matrix (using `GeneActivity`) and adding it to the Seurat object.
+
+```{r gam, exercise=TRUE, exercise.eval=TRUE}
+
+```
+
+```{r gam-hint}
+gene.activities <- GeneActivity(pbmc)
+pbmc[['RNA']] <- CreateAssayObject(counts = gene.activities)
+```
+
+Perform normalization on the new Seurat object with `NormalizeData`:
+```{r norm-gam, exercise=TRUE, exercise.eval=TRUE}
+
+```
+
+```{r norm-gam-hint}
+pbmc <- NormalizeData(
+  object = pbmc,
+  assay = 'RNA',
+  normalization.method = 'LogNormalize',
+  scale.factor = median(pbmc$nCount_RNA)
+)
+```
+
+**Exercise**
+Normalize the same object with centered log ratio transformation (use a different variable)
+
+```{r norm-gam-ex, exercise=TRUE}
+
+```
+
+```{r quiz-9, echo=FALSE}
+quiz(
+  question("Why are the activities of canonical marker genes much noisier than scRNA-seq?",
+  answer("They represent measurements from sparse chromatin data", correct =TRUE),
+  answer("They include raw unnormalized data"),
+  answer("They assume a general correspondence between gene body/promoter accessibility and gene expression which may not always be the case", correct = TRUE))
+)
+```
+
+Create multiple plots identifying 4 different populations by their markers (MS4A1, CD3D, LEF1, NKG7)
+
+```{r feat-plot, exercise=TRUE, exercise.eval=TRUE}
+
+```
+
+```{r feat-plot-hint}
+DefaultAssay(pbmc) <- 'RNA'
+
+FeaturePlot(
+  object = pbmc,
+  features = c('MS4A1', 'CD3D', 'LEF1', 'NKG7'),
+  pt.size = 0.1,
+  max.cutoff = 'q95',
+  ncol = 3
+)
+```
 
 ## **Topic 7 : Integrating scATAC-seq data with scRNA-seq data**
 
-While scATAC-seq informs us of chromatin accessibility changes, incorporating scRNA-seq data from the same system (human PBMC) provides quantitative gene expression data associated with differential chromatin accessibility changes surrounding respective TSS. Hence, we can identify the shared changes across two modalities for relevant biological inference.
+While scATAC-seq informs us of chromatin accessibility changes, incorporating scRNA-seq data from the same system (human PBMC) provides quantitative gene expression data associated with differential chromatin accessibility changes surrounding respective TSS. In this method, we will utilize methods for cross-modality integration and label transfer (Cell. Volume 177, Issue 7, 13 June ## 2019, Pages 1888-1902.e21.). Hence, we can identify the shared changes across two modalities for relevant biological inference. 
+
+### scRNA-seq Dataset
+_The required data has been downloaded in the 'data' folder to be used in this tutorial_
+
+### Workflow
+
+**Step 1:** Load the pre-processed scRNA-seq data for PBMCs and find 'Anchors' that will help integrating both datasets using `FindTransferAnchors` and `TransferData`
+
+```{r RnaData, exercise=TRUE, exercise.eval=TRUE}
+
+```
+
+```{r RnaData-hint}
+
+pbmc_rna <- readRDS("data/pbmc_10k_v3.rds")
+
+transfer.anchors <- FindTransferAnchors(
+  reference = pbmc_rna,
+  query = pbmc,
+  reduction = 'cca'
+)
+
+predicted.labels <- TransferData(
+  anchorset = transfer.anchors,
+  refdata = pbmc_rna$celltype,
+  weight.reduction = pbmc[['lsi']],
+  dims = 2:30
+)
+
+```
+
+**Step 2:** Add metadata information of predicted labels to the Seurat object
+
+```{r RnaData_meta, exercise=TRUE, exercise.eval=TRUE}
+
+```
+
+```{r RnaData_meta-hint}
+pbmc <- AddMetaData(object = pbmc, metadata = predicted.labels)
+```
+
+Create UMAP visualization with the scRNA-seq and scATAC-seq data:
+
+```{r rna-atac-plot, exercise=TRUE, exercise.eval=TRUE}
+
+```
+
+```{r rna-atac-plot-hint}
+plot1 <- DimPlot(
+  object = pbmc_rna,
+  group.by = 'celltype',
+  label = TRUE,
+  repel = TRUE) + NoLegend() + ggtitle('scRNA-seq')
+
+plot2 <- DimPlot(
+  object = pbmc,
+  group.by = 'predicted.id',
+  label = TRUE,
+  repel = TRUE) + NoLegend() + ggtitle('scATAC-seq')
+
+plot1 + plot2
+```
+
+These plots exhibit that scRNA-based classifications are consistent with the scATAC-seq based UMAP visualization.
+
+```{r quiz-10, echo=FALSE}
+quiz(question("Which plot shows the predicted labels?)",
+  answer("Left (scRNA-seq)"),
+  answer("Right (scATAC-seq)", correct = TRUE))
+)  
+```
+
+```{r quiz-11, echo=FALSE}
+quiz(question("Why cluster 14 should be removed from the downstream analysis?)",
+  answer("This group has lower QC metrics", correct = TRUE),
+  answer("There is no correlation between gene activity matrix and scRNA-seq dataset"))
+)  
+```
+
+**Step 3:** Annotate the scATAC-seq-derived clusters
+
+_Cluster 14 (mapped to CD4 Memory T cells) is an extremely small cluster with lower QC metrics, potentially representing low-quality cells. Hence, it should be removed from downstream analysis._
+
+```{r annot-multi, exercise=TRUE, exercise.eval=TRUE}
+
+```
+
+```{r annot-multi-hint}
+pbmc <- subset(pbmc, idents = 14, invert = TRUE)
+pbmc <- RenameIdents(
+  object = pbmc,
+  '0' = 'CD14 Mono',
+  '1' = 'CD4 Memory',
+  '2' = 'CD8 Effector',
+  '3' = 'CD4 Naive',
+  '4' = 'CD14 Mono',
+  '5' = 'DN T',
+  '6' = 'CD8 Naive',
+  '7' = 'NK CD56Dim',
+  '8' = 'pre-B',
+  '9' = 'CD16 Mono',
+  '10' = 'pro-B',
+  '11' = 'DC',
+  '12' = 'NK CD56bright',
+  '13' = 'pDC'
+)
+```
+
+```{r quiz-12, echo=FALSE}
+quiz(question("What description is correct for the following answer?",
+  answer("Transfer the cell-type labels we learned from the scRNA-seq data to the scATAC-seq cells", correct = TRUE),
+  answer("Transfer the scATAC-seq labels to the scRNA-seq celltype labels"))
+)  
+```
+
