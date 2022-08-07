@@ -77,6 +77,8 @@ Works in all Operating Systems R studio can be run in.
 
 1.  Clone Git Repo
 
+2.  Open multiomics_tutorial_learnr.Rmd document in R studio
+
 2.  Hit Run Document
 
 3.  Wait for file to download data sets and then proceed with tutorial
