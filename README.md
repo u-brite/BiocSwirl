@@ -9,8 +9,9 @@
         -   [Installation](#installation)
         -   [Requirements](#requirements) *Can be named Dependencies as well*
         -   [Steps to run](#steps-to-run) *Optional depending on project*
-    -   [Contributions and Skills Gained](#contributions) 
+    -   [Contributions and Skills Gained](#contributions)
     -   [Team Members](#team-members)
+    -   [Screen Shots](#screenshots)
 
 ## Background {#background}
 
@@ -18,22 +19,19 @@ Bioinformatics is an emerging interdisciplinary field that incorporates biologic
 
 For this hackathon we adapted the [Analyzing PBMC scATAC-seq tutorial](https://satijalab.org/signac/articles/pbmc_vignette.html) from the Satija Lab into a more interactive LearnR format. This tutorial looks at the analysis of single cell ATAC-seq data of human peripheral blood mononuclear cells collected on the 10X Genomics Platform. Single cell ATAC-seq (Assay for Transposase Accessible Chromatin with high-throughput sequencing) is a method that looks at open chromatin regions at the genome level at a single cell resolution. Our lessons aim to teach learners not only the background of this technology, but also the analysis of this data type from preprocessing to integrating with scRNAseq data. More information is included in the workflow from the diagram below.
 
+![](Workflow_scATAC_Seq.png)
+
 ## Data {#data}
 
-The data used is from the 10X genomics website. It contains a single-cell ATAC-seq dataset of human peripheral blood mononuclear cells (PBMCs). The files below will be downloaded by the tutorial itself, so there is no need to download it. 
+The data used is from the 10X genomics website. It contains a single-cell ATAC-seq dataset of human peripheral blood mononuclear cells (PBMCs). The files below will be downloaded by the tutorial itself, so there is no need to download it.
 
-- [The Raw data](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_filtered_peak_bc_matrix.h5)
-- [The Metadata](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_singlecell.csv)
-- The [fragments file](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_fragments.tsv.gz) 
-The [fragments file index](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_fragments.tsv.gz.tbi)
--The [ScRNASeq file](https://signac-objects.s3.amazonaws.com/pbmc_10k_v3.rds)
-
+-   [The Raw data](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_filtered_peak_bc_matrix.h5)
+-   [The Metadata](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_singlecell.csv)
+-   The [fragments file](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_fragments.tsv.gz) The [fragments file index](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_fragments.tsv.gz.tbi) -The [ScRNASeq file](https://signac-objects.s3.amazonaws.com/pbmc_10k_v3.rds)
 
 ## Usage {#usage}
 
 ### Installation {#installation}
-
-
 
 Installation requires fetching the source code and opening the file in R studio using the Run Document Function. Following are required:
 
@@ -41,7 +39,6 @@ Installation requires fetching the source code and opening the file in R studio 
 -   Rstudio
 
 To fetch source code, change in to directory of your choice and run:
-
 
 ``` sh
 git clone -b main 
@@ -52,45 +49,89 @@ git clone -b main
 
 *OS:*
 
-Works in all Operating Systems R studio can be run in. 
+Works in all Operating Systems R studio can be run in.
 
 *Tools:*
 
- *R*:
-- R version (4.0.3 or higher)
+*R*: - R version (4.0.3 or higher)
 
 *Rstudio*:
 
-- RStudio 2022.07.1+554 "Spotted Wakerobin" Release  equivalent or higher
+-   RStudio 2022.07.1+554 "Spotted Wakerobin" Release equivalent or higher
 
 *Packages Required for R*:
 
-- LearnR
-- Seurat
-- Signac
-- ggplot2
-- GenomeInfoDb
-- EnsDb.Hsapiens.v75
-- hdf5r
-- sortable
-
+-   LearnR
+-   Seurat
+-   Signac
+-   ggplot2
+-   GenomeInfoDb
+-   EnsDb.Hsapiens.v75
+-   hdf5r
+-   sortable
 
 ### Steps to run {#steps-to-run}
 
-1. Clone Git Repo
+1.  Clone Git Repo
 
-2. Hit Run Document 
+2.  Hit Run Document
 
-3. Wait for file to download data sets and then proceed with tutorial
-
-
+3.  Wait for file to download data sets and then proceed with tutorial
 
 ## Contributions and Skills Gained {#contributions}
 
++------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| Name                   | Knowledge gained                                                                                                                                                                                                         | Contributions  (sections of project, writing, etc)                                                                                              |
++------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| Almas Khan (Team Lead) | -scATAC-seq                                                                                                                                                                                                              | -Writing the Readme (all sections), Finding and reading background papers for scATAC-seq                                                        |
+|                        |                                                                                                                                                                                                                          |                                                                                                                                                 |
+|                        | -interactive tutorial with learnRn                                                                                                                                                                                       | -creating workflow figure                                                                                                                       |
+|                        |                                                                                                                                                                                                                          |                                                                                                                                                 |
+|                        | -delegation and how to lead a team for a hackathon                                                                                                                                                                       | -Wrote code for downloading files and troubleshooting major errors in learnR document, fixing errors and finalizing the Rmd and learnR document |
+|                        |                                                                                                                                                                                                                          |                                                                                                                                                 |
+|                        | \                                                                                                                                                                                                                        | -demonstrating troubleshooting process                                                                                                          |
+|                        |                                                                                                                                                                                                                          |                                                                                                                                                 |
+|                        |                                                                                                                                                                                                                          | -Teaching members about github and R studio                                                                                                     |
++------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| Sayan Bakshi           | R markdown (intermediate); scATAC-seq analysis (beginner), Multi-omics by combining scATAC-seq with scRNA-seq (beginner), learnR (intermediate), learnR-based interactive course making for teaching purposes (beginner) | \- Completed the scATAC-seq and multimodal workflow with scRNA-seq from the original tutorial                                                   |
+|                        |                                                                                                                                                                                                                          |                                                                                                                                                 |
+|                        |                                                                                                                                                                                                                          | \- Performed background literature study on the topic                                                                                           |
+|                        |                                                                                                                                                                                                                          |                                                                                                                                                 |
+|                        |                                                                                                                                                                                                                          | \- Devised questions, quizzes, exercises for 3 of the 7 sections                                                                                |
+|                        |                                                                                                                                                                                                                          |                                                                                                                                                 |
+|                        |                                                                                                                                                                                                                          | \- Coded the complete tutorial in R with learnR                                                                                                 |
+|                        |                                                                                                                                                                                                                          |                                                                                                                                                 |
+|                        |                                                                                                                                                                                                                          | \- Performed troubleshooting, proof-reading, and made necessary changes (e.g. adding descriptions) in the final interactive course              |
++------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| Kingsley Bentum        | R markdown (beginner), scATAC-seq analysis  Multi-omics by combining scATAC-seq with scRNA-seq (beginner), learnR (beginner), learnR-based interactive course making for teaching purposes (beginner)                    | -Writing of the introduction to the lesson and providing relevant materials needed for the lesson                                               |
+|                        |                                                                                                                                                                                                                          |                                                                                                                                                 |
+|                        |                                                                                                                                                                                                                          | -Submission of exercises, quizzes                                                                                                               |
+|                        |                                                                                                                                                                                                                          |                                                                                                                                                 |
+|                        |                                                                                                                                                                                                                          | \- Writing and proof-reading of the summary document                                                                                            |
++------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| Yong Wang              | \- scATAC-seq analysis (beginner),  - - R Markdown (beginner),                                                                                                                                                           | \- Finish reading background papers on  scATAC-seq                                                                                              |
+|                        |                                                                                                                                                                                                                          |                                                                                                                                                 |
+|                        | \- Multi-omics analyses by combining scATAC-seq with scRNA-seq by using Signac, Seurat packages (beginner)                                                                                                               | \- Completed the scATAC-seq and multimodal workflow with scRNA-seq from the original tutorial                                                   |
+|                        |                                                                                                                                                                                                                          |                                                                                                                                                 |
+|                        | \- Interactive Tutorial with learnr (beginner)                                                                                                                                                                           | \- Develop questions, quizzes, exercises for 4 of the 7 section                                                                                 |
+|                        |                                                                                                                                                                                                                          |                                                                                                                                                 |
+|                        | \- Git and GitHub (beginner)                                                                                                                                                                                             | \- perform some practice on the coding of interactive tutorial with learnr in rmd file.                                                         |
+|                        |                                                                                                                                                                                                                          |                                                                                                                                                 |
+|                        |                                                                                                                                                                                                                          | \                                                                                                                                               |
++------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| Lisa N Cao             |                                                                                                                                                                                                                          | -helping with troubleshooting                                                                                                                   |
++------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
 
 ## Team Members {#team-members}
 
 Almas Khan \| [almas.khan2\@outlook.com](mailto:almas.khan2@outlook.com){.email} \| Github:almas2019\ Team Leader\
-Yong Wang [yongwnet70\@gmail.com](mailto:yongwnet70@gmail.com){.email} \|Github:yongwnet70\ Member\ 
-Sayan Bakshi [sbakshi\@uab.edu](mailto:sbakshi@uab.edu){.email} \|Github:bakshisayan\ Member\ 
-Kingsley Emmanuel Bentum [kbentum8786\@tuskegee.edu](mailto:kbentum8786@tuskegee.edu){.email} \|Github:Drkbentum\ Member\ 
+Yong Wang [yongwnet70\@gmail.com](mailto:yongwnet70@gmail.com){.email} \|Github:yongwnet70\ Member
+Sayan Bakshi [sbakshi\@uab.edu](mailto:sbakshi@uab.edu){.email} \|Github:bakshisayan\ Member
+Kingsley Emmanuel Bentum [kbentum8786\@tuskegee.edu](mailto:kbentum8786@tuskegee.edu){.email} \|Github:Drkbentum\ Member 
+Lisa Natasha Cao [lisanatashaca\@gmail.com](mailto:lisanatashacao@gmail.com){.email} \|Github:lisancao\ Member
+
+## Screenshots (#screenshots)
+
+![](rstudio_screenshot1.png)
+
+![](rstudio_screenshot2.png)
