@@ -198,7 +198,7 @@ question_rank(
 ```
 
 ```{r load-peak-matrix-hint}
-counts <- Read10X_h5(filename = "data/atac_v1_pbmc_10k_filtered_peak_bc_matrix.h5")
+counts <- Read10X_h5(filename = raw_data_dest)
 ```
 
 ### Load the metadata:
@@ -209,7 +209,7 @@ counts <- Read10X_h5(filename = "data/atac_v1_pbmc_10k_filtered_peak_bc_matrix.h
 
 ```{r load-metadata-hint}
 metadata <- read.csv(
-  file = "data/atac_v1_pbmc_10k_singlecell.csv",
+  file = metadata_dest,
   header = TRUE,
   row.names = 1
 )
@@ -226,7 +226,7 @@ chrom_assay <- CreateChromatinAssay(
   counts = counts,
   sep = c(":", "-"),
   genome = 'hg19',
-  fragments = 'data/atac_v1_pbmc_10k_fragments.tsv.gz',
+  fragments =fragment_dest,
   min.cells = 10,
   min.features = 200
 )
@@ -580,7 +580,7 @@ _The required data has been downloaded in the 'data' folder to be used in this t
 
 ```{r RnaData-hint}
 
-pbmc_rna <- readRDS("data/pbmc_10k_v3.rds")
+pbmc_rna <- readRDS(scrna_seq_dest)
 
 transfer.anchors <- FindTransferAnchors(
   reference = pbmc_rna,
