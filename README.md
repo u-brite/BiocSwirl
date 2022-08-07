@@ -3,17 +3,17 @@
 ## Table of Contents
 
 -   [Structure](#structure)
-    -   [Background](#Background)
-    -   [Data](#data)
-    -   [Usage](#usage)
-        -   [Installation](#installation)
-        -   [Requirements](#requirements) 
-        -   [Steps to run](#steps-to-run) 
+    -   [Background](#background-background)
+    -   [Data](#data-data)
+    -   [Usage](#usage-usage)
+        -   [Installation](#installation-installation)
+        -   [Requirements](#requirements-requirements) 
+        -   [Steps to run](#steps-to-run-steps-to-run) 
     -   [Contributions and Skills Gained](#contributions)
-    -   [Team Members](#team-members)
-    -   [Screen Shots](#screenshots)
+    -   [Team Members](#team-members-team-members)
+    -   [Screen Shots](#screenshots-screenshots)
 
-## Background {#background}
+## Background {#Background}
 
 Bioinformatics is an emerging interdisciplinary field that incorporates biological, statistical and computer science based knowledge to provide in-depth analysis and interpretation of biological data. There are a number of resources available to individuals interested in learning bioinformatics and these include: workshops, videos,and online tutorials. However, workshops can be time limiting, videos lack the ability to troubleshoot, and online tutorials can lack meaningful feedback and interactivity aside from copying and pasting codes. Our project seeks to create an interactive lesson using the learnR format and aims to provide a user-friendly and interactive learning environment that allows students to learn at their own pace.
 
@@ -81,7 +81,7 @@ Works in all Operating Systems R studio can be run in.
 
 3.  Wait for file to download data sets and then proceed with tutorial
 
-## Contributions and Skills Gained {#contributions}
+## Contributions and Skills Gained {#Contributions-and-Skills-Gained}
 
 ### Contributions
 
