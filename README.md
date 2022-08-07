@@ -55,7 +55,8 @@ Works in all Operating Systems R studio can be run in.
 
 *Tools:*
 
-*R*: - R version (4.0.3 or higher)
+*R*: 
+- R version (4.0.3 or higher)
 
 *Rstudio*:
 
