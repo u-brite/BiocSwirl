@@ -7,8 +7,8 @@
     -   [Data](#data)
     -   [Usage](#usage)
         -   [Installation](#installation)
-        -   [Requirements](#requirements) *Can be named Dependencies as well*
-        -   [Steps to run](#steps-to-run) *Optional depending on project*
+        -   [Requirements](#requirements) 
+        -   [Steps to run](#steps-to-run) 
     -   [Contributions and Skills Gained](#contributions)
     -   [Team Members](#team-members)
     -   [Screen Shots](#screenshots)
@@ -27,7 +27,9 @@ The data used is from the 10X genomics website. It contains a single-cell ATAC-s
 
 -   [The Raw data](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_filtered_peak_bc_matrix.h5)
 -   [The Metadata](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_singlecell.csv)
--   The [fragments file](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_fragments.tsv.gz) The [fragments file index](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_fragments.tsv.gz.tbi) -The [ScRNASeq file](https://signac-objects.s3.amazonaws.com/pbmc_10k_v3.rds)
+-   The [fragments file](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_fragments.tsv.gz) 
+-   The [fragments file index](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_fragments.tsv.gz.tbi) 
+-   The [ScRNASeq file](https://signac-objects.s3.amazonaws.com/pbmc_10k_v3.rds)
 
 ## Usage {#usage}
 
@@ -82,25 +84,29 @@ Works in all Operating Systems R studio can be run in.
 
 ### Contributions
 
-| Name  | Contribution | Skills Gained
+| Name  | Contribution | Skills Gained|
 | ------------- | ------------- | ------------- |
-| Almas Khan  | - Writing the Readme (all sections) 
-- Finding and reading background papers for scATAC-seq - Creating workflow figure
-- Wrote code for downloading files and troubleshooting major errors in learnR document
-- fixing errors and finalizing the Rmd and learnR document
-- demonstrating troubleshooting process
-- Teaching members about github and R studio  | interactive tutorial with learnR, scATAC-seq, delegation and learning to lead a hackathon team|
-| Sayan Bakshi|- Completed the scATAC-seq and multimodal workflow with scRNA-seq from the original tutorial
-- Performed background literature study on the topic
-- Devised questions, quizzes, exercises for 3 of the 7 sections
-- Coded the complete tutorial in R with learnR
-- Performed troubleshooting, proof-reading, and made necessary changes (e.g. adding descriptions) in the final interactive course| Something
+| Almas Khan  | writing the Readme (all sections),Finding and reading background papers for scATAC-seq,Creating workflow figure , Wrote code for downloading files and troubleshooting major errors in learnR document,fixing errors and finalizing the Rmd and learnR document,demonstrating troubleshooting process,teaching members about github and R studio | interactive tutorial with learnR, scATAC-seq,delegation and learning to lead a hackathon team|
+| Sayan Bakshi|Completed the scATAC-seq and multimodal workflow with scRNA-seq from the original tutorial,Performed background literature study on the topic,Devised questions, quizzes, exercises for 3 of the 7 sections,Coded the complete tutorial in R with learnR, helped with troubleshooting, proof-reading, and  changes (e.g. adding descriptions) in the interactive course| R markdown (intermediate); scATAC-seq analysis (beginner), Multi-omics by combining scATAC-seq with scRNA-seq (beginner), learnR (intermediate), learnR-based interactive course making for teaching purposes (beginner)|
+|Kingsley Bentum|Writing the introductory part of the learnR lesson and providing relevant materials needed for the lesson, Submission of exercises, quizzes , proof-reading of the summary document|R markdown (beginner), scATAC-seq analysis  Multi-omics by combining scATAC-seq with scRNA-seq (beginner), learnR (beginner), learnR-based interactive course making for teaching purposes (beginner)|
+|Yong Wang|Finish reading background papers on  scATAC-seq ,Completed the scATAC-seq and multimodal workflow with scRNA-seq from the original tutorial,Develop questions, quizzes, exercises for 4 of the 7 sections,perform some practice on the coding of interactive tutorial with learnr in rmd file|scATAC-seq analysis (beginner),R Markdown (beginner),Multi-omics analyses by combining scATAC-seq with scRNA-seq by using Signac, Seurat packages (beginner),Interactive Tutorial with learnr (beginner),Git and GitHub (beginner)|
+|Lisa Natasha Cao|helping with troubleshooting|
+
+
+
 
 
 ## Team Members {#team-members}
 
-Almas Khan \| [almas.khan2\@outlook.com](mailto:almas.khan2@outlook.com){.email} \| Github:almas2019 Team Leader\
-Yong Wang [yongwnet70\@gmail.com](mailto:yongwnet70@gmail.com){.email} \|Github:yongwnet70 Member Sayan Bakshi [sbakshi\@uab.edu](mailto:sbakshi@uab.edu){.email} \|Github:bakshisayan Member Kingsley Emmanuel Bentum [kbentum8786\@tuskegee.edu](mailto:kbentum8786@tuskegee.edu){.email} \|Github:Drkbentum Member Lisa Natasha Cao [lisanatashaca\@gmail.com](mailto:lisanatashacao@gmail.com){.email} \|Github:lisancao Member
+Almas Khan | [almas.khan2\@outlook.com](mailto:almas.khan2@outlook.com) | Github:almas2019 |Team Leader|
+
+Yong Wang| [yongwnet70\@gmail.com](mailto:yongwnet70@gmail.com)|Github:yongwnet70| Member|
+
+Sayan Bakshi | [sbakshi\@uab.edu](mailto:sbakshi@uab.edu)|Github:bakshisayan|Member|
+
+Kingsley Emmanuel Bentum | [kbentum8786\@tuskegee.edu](mailto:kbentum8786@tuskegee.edu)|Github:Drkbentum|Member|
+
+Lisa Natasha Cao |[lisanatashaca\@gmail.com](mailto:lisanatashacao@gmail.com)|Github:lisancao|Member
 
 ## Screenshots (#screenshots)
 
