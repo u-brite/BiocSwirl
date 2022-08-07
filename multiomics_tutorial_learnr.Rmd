@@ -16,7 +16,7 @@ library(patchwork)
 library(hdf5r)
 #Create Data directory
 
-dir.create(paste(getwd(),"/data/",sep = ""))
+#dir.create(paste(getwd(),"/data/",sep = ""))
 options(timeout = 300)
 # Get urls
 raw_data_url <- "https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_filtered_peak_bc_matrix.h5"
@@ -30,12 +30,36 @@ metadata_dest <-  paste(getwd(), "/data/atac_v1_pbmc_10k_singlecell.csv",sep="")
 fragment_dest <- paste(getwd(), "/data/atac_v1_pbmc_10k_fragments.tsv.gz",sep="")
 fragment_index_dest <- paste(getwd(), "/data/atac_v1_pbmc_10k_fragments.tsv.gz.tbi",sep="")
 scrna_seq_dest <- paste(getwd(),"pbmc_10k_v3.rds",sep="")
-#Download file and add to directory
+Download file and add to directory
 download.file(raw_data_url,raw_data_dest)
 download.file(metadata_url,metadata_dest)
 download.file(fragment_url,fragment_dest,mode="wb")
 download.file(fragment_index_url,fragment_index_dest,mode="wb")
 download.file(scRNAseq_url,scrna_seq_dest,mode="wb")
+
+counts <- Read10X_h5(filename = raw_data_dest)
+metadata <- read.csv(
+  file = metadata_dest,
+  header = TRUE,
+  row.names = 1
+)
+chrom_assay <- CreateChromatinAssay(
+  counts = counts,
+  sep = c(":", "-"),
+  genome = 'hg19',
+  fragments =fragment_dest,
+  min.cells = 10,
+  min.features = 200
+)
+pbmc <- CreateSeuratObject(
+  counts = chrom_assay,
+  assay = "peaks",
+  meta.data = metadata
+)
+
+
+
+tutorial_options(exercise.timelimit = 10000)
 ```
 
 ## Introduction
