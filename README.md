@@ -1,111 +1,98 @@
 # BiocSwirl
-:exclamation: _This top heading should be the name of your project i.e. BiocSwirl or SNVariome. Anything between 2 exclamation marks is intended to be deleted. Any content that isn't a heading or an optional heading can be deleted as well. The structure of this readme is open to any creative changes, but the main components of Background/Data/Usage/Team Members should remain. You're free to add images and get creative about how you want your readme to look._ :exclamation:
-
-:exclamation: _The `configs` and `notebooks` directories are also optional. We recommend taking a look at [cookiecutter for datascience](https://github.com/drivendata/cookiecutter-data-science) or [cookiecutter for computational biology](https://github.com/drivendata/cookiecutter-data-science) to get ideas on structuring your projects. Also, use a `.gitignore` that fits the main programming language of your project._ :exclamation:
 
 ## Table of Contents
 
-- [Template](#team-repo-template)
-    - [Background](#Background)
-    - [Data](#data)
-    - [Usage](#usage)
-        - [Installation](#installation)
-        - [Requirements](#requirements) _Can be named Dependencies as well_
-        - [Activate conda environment](#activate-conda-environment) _Optional_
-        - [Steps to run ](#steps-to-run) _Optional depending on project_
-            - [Step-1](#step-1)
-            - [Step-2](#step-2)
-    - [Results](#results) _Optional depending on project_
-    - [Team Members](#team-members)
+-   [Structure](#structure)
+    -   [Background](#Background)
+    -   [Data](#data)
+    -   [Usage](#usage)
+        -   [Installation](#installation)
+        -   [Requirements](#requirements) *Can be named Dependencies as well*
+        -   [Steps to run](#steps-to-run) *Optional depending on project*
+    -   [Contributions and Skills Gained](#contributions) 
+    -   [Team Members](#team-members)
 
-## Background
+## Background {#background}
 
-:exclamation: _Include background on the project, project description, and significance. This will be converted to your team's abstract by the end of the hackathon. This should be updated by Monday, August 1st to include feedback given._ :exclamation:
+Bioinformatics is an emerging interdisciplinary field that incorporates biological, statistical and computer science based knowledge to provide in-depth analysis and interpretation of biological data. There are a number of resources available to individuals interested in learning bioinformatics and these include: workshops, videos,and online tutorials. However, workshops can be time limiting, videos lack the ability to troubleshoot, and online tutorials can lack meaningful feedback and interactivity aside from copying and pasting codes. Our project seeks to create an interactive lesson using the learnR format and aims to provide a user-friendly and interactive learning environment that allows students to learn at their own pace.
 
-## Data
+For this hackathon we adapted the [Analyzing PBMC scATAC-seq tutorial](https://satijalab.org/signac/articles/pbmc_vignette.html) from the Satija Lab into a more interactive LearnR format. This tutorial looks at the analysis of single cell ATAC-seq data of human peripheral blood mononuclear cells collected on the 10X Genomics Platform. Single cell ATAC-seq (Assay for Transposase Accessible Chromatin with high-throughput sequencing) is a method that looks at open chromatin regions at the genome level at a single cell resolution. Our lessons aim to teach learners not only the background of this technology, but also the analysis of this data type from preprocessing to integrating with scRNAseq data. More information is included in the workflow from the diagram below.
 
-:exclamation: _Discuss the data you used and how it can be accessed._ :exclamation:
+## Data {#data}
 
-## Usage
+The data used is from the 10X genomics website. It contains a single-cell ATAC-seq dataset of human peripheral blood mononuclear cells (PBMCs). The files below will be downloaded within the tutorial. 
 
-:exclamation: _How will someone not involved in your project be able to run the code or use it._ :exclamation:
+- [The Raw data](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_filtered_peak_bc_matrix.h5)
+- [The Metadata](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_singlecell.csv)
+- The [fragments file](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_fragments.tsv.gz) 
+The [fragments file index](https://cf.10xgenomics.com/samples/cell-atac/1.0.1/atac_v1_pbmc_10k/atac_v1_pbmc_10k_fragments.tsv.gz.tbi)
 
-### Installation
 
-:exclamation: _If installation is required, please mention how to do so here._ :exclamation:
 
-Installation simply requires fetching the source code. Following are required:
+## Usage {#usage}
 
-- Git
+
+
+### Installation {#installation}
+
+
+
+Installation requires fetching the source code and opening the file in R studio using the Run Document Function. Following are required:
+
+-   Git
+-   Rstudio
 
 To fetch source code, change in to directory of your choice and run:
 
-```sh
-git clone -b main \
-    git@github.com:u-brite/team-repo-template.git
+
+``` sh
+git clone -b main 
+   git@github.com:u-brite/BiocSwirl.git
 ```
 
-### Requirements
-:exclamation: _Note any software used (including Python or R packages), operating system requirements, etc. and its version so that your project is reproducible. It does not have to be in the below format_ :exclamation:
+### Requirements {#requirements}
 
 *OS:*
 
-Currently works only in Linux OS. Docker versions may need to be explored later to make it useable in Mac (and
-potentially Windows).
+Works in all Operating Systems R studio can be run in. 
 
 *Tools:*
 
-- Anaconda3
-    - Tested with version: 2020.02
+ *R*:
+- R version (4.0.3 or higher)
 
-### Activate conda environment
-:exclamation: _Optional: Depends on project._ :exclamation:
+*Rstudio*:
 
-Change in to root directory and run the commands below:
+- RStudio 2022.07.1+554 "Spotted Wakerobin" Release  equivalent or higher
 
-```sh
-# create conda environment. Needed only the first time.
-conda env create --file configs/environment.yaml
+*Packages Required for R*:
 
-# if you need to update existing environment
-conda env update --file configs/environment.yaml
-
-# activate conda environment
-conda activate testing
-```
-
-### Steps to run
-:exclamation: _Optional: Depends on project._ :exclamation:
-
-#### Step 1
-
-```sh
-python src/data_prep.py -i path/to/file.tsv -O path/to/output_directory
-```
-
-#### Step 2
-
-```sh
-python src/model.py -i path/to/parsed_file.tsv -O path/to/output_directory
-```
-
-Output from this step includes -
-
-```directory
-output_directory/
-├── parsed_file.tsv               <--- used for model
-├── plot.pdf- Plot to visualize data
-└── columns.csv - columns before and after filtering step
-
-```
-
-**Note**: The is an example note with a [link](https://github.com/u-brite/team-repo-template).
+- LearnR
+- Seurat
+- Signac
+- ggplot2
+- GenomeInfoDb
+- EnsDb.Hsapiens.v75
+- hdf5r
+- sortable
 
 
-## Results
-:exclamation: _If your project yielded or intends to yield some novel analysis, please include them in your readme. It can be named something other than results as well._ :exclamation:
+### Steps to run {#steps-to-run}
 
-## Team Members
+1. Clone Git Repo
 
-Tarun Mamidi | tmamidi@uab.edu | Team Leader  
-Shaurita Hutchins | shutchins@uab.edu | Co-leader
+2. Hit Run Document 
+
+3. Wait for file to download data sets and then proceed with tutorial
+
+
+
+## Contributions and Skills Gained {#contributions}
+
+
+## Team Members {#team-members}
+
+Almas Khan \| [almas.khan2\@outlook.com](mailto:almas.khan2@outlook.com){.email} \| Github:almas2019\ Team Leader\
+Yong Wang [yongwnet70\@gmail.com](mailto:yongwnet70@gmail.com){.email} \|Github:yongwnet70\ Member\ 
+Sayan Bakshi [sbakshi\@uab.edu](mailto:sbakshi@uab.edu){.email} \|Github:bakshisayan\ Member\ 
+Yong Wang [yongwnet70\@gmail.com](mailto:yongwnet70@gmail.com){.email} \|Github:yongwnet70\ Member\ 
